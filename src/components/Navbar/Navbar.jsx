@@ -5,12 +5,12 @@ import basket_icon from "../../assets/frontend_assets/basket_icon.png"
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
     const [menu, setMenu] = useState("menu");
   return (
     <div className='navbar'>
 
-      <img src={logo} alt="Logo" className="logo"/>
+      <Link to='/'><img src={logo} alt="Logo" className="logo"/></Link>
 
       <ul className="navbar-menu">
         <Link to='/' onClick={() => setMenu("home")} className={menu === "home"?"active":""}>Home</Link>
@@ -24,11 +24,11 @@ const Navbar = () => {
         <img src={search_icon} alt="Search"/>
 
         <div className="navbar-search-icon">
-          <img src={basket_icon} alt="Basket"/>
+          <Link to='/cart'><img src={basket_icon} alt="Basket"/></Link>
           <div className="dot"></div>
         </div>
 
-        <button>Sign in</button>
+        <button onClick={() => setShowLogin(true)}>Sign in</button>
 
       </div>
 
